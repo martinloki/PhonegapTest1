@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Phone Gap First Test Page 2</title>
+			<script src="phonegap.js"></script>
+			<script type="text/javascript" charset="utf-8">
+			// Wait for Cordova to load
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+			// Cordova is ready
+			function onDeviceReady() {
+					var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+					db.transaction(populateDB, errorCB, successCB);
+			}
+
+			// Populate the database 
+			function populateDB(tx) {
+					tx.executeSql('DROP TABLE IF EXISTS DEMO');
+					tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+					tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+					tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+			}
+
+			// Transaction error callback
+			function errorCB(tx, err) {
+					alert("Error processing SQL: " + err);
+			}
+
+			// Transaction success callback
+			function successCB() {
+					alert("success!");
+			}
+			</script>
+	</head>
+
+	<body>
+		<p>Hello Phone Gap Page 2</p>
+		This page is totally updated and stuff.
+		<p><a href="http://www.carepond.com">Carepond.com</a></p>
+		<p><a href="index.html">Index</a></p>
+		<p><a href="page2.html">page 2</a></p>
+		<p><a href="page3.html">page 3</a></p>
+		<p><a href="maptest.html">Map Test</a></p>
+	</body>
+</html>
+
+
